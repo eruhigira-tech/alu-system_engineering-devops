@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+# Configures nginx on a new Ubuntu machine with an X-Served-By header holding the hostname
+apt-get update
+apt-get -y install nginx
+echo "Holberton School for the win!" > /var/www/html/index.html
+echo "Ceci n'est pas une page" > /var/www/html/404.html
+cat > /etc/nginx/sites-available/default << 'CONF'
+server {
+	listen 80 default_server;
+	root /var/www/html;
+	index index.html index.htm index.nginx-debian.html;
+	server_name _;
+
+	add_header X-Served-By $hostname always;
+
+	location /redirect_me {
+		return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
+	}
+
+	error_page 404 /404.html;
+	location = /404.html {
+		internal;
+	}
+
+	location / {
+		try_files $uri $uri/ =404;
+	}
+}
+CONF
+ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+service nginx restart
