@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>404 - Ceci n'est pas une page</title>
+<style>
+  :root { --bg1: #1b1f3a; --bg2: #3b2a5c; --gold: #ffd36e; --ink: #f4f1ff; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; min-height: 100vh; display: grid; place-items: center;
+    background: radial-gradient(circle at 30% 20%, var(--bg2), var(--bg1));
+    color: var(--ink); font-family: Georgia, "Times New Roman", serif;
+    text-align: center; overflow: hidden;
+  }
+  main { padding: 1.5rem; position: relative; z-index: 1; }
+  .code { font-size: clamp(5rem, 22vw, 11rem); font-weight: 700; line-height: 1; letter-spacing: .05em; }
+  .code span { display: inline-block; animation: float 3s ease-in-out infinite; }
+  .code span:nth-child(2) {
+    color: var(--gold); animation-delay: .4s;
+    text-shadow: 0 0 28px rgba(255, 211, 110, .6);
+  }
+  .code span:nth-child(3) { animation-delay: .8s; }
+  h1 { margin: .5rem 0; font-size: clamp(1.4rem, 5vw, 2.2rem); font-style: italic; }
+  p { margin: .5rem auto 1.8rem; max-width: 32rem; line-height: 1.6; opacity: .85; }
+  a {
+    display: inline-block; padding: .75rem 1.6rem; border-radius: 999px;
+    background: var(--gold); color: #2b1b4a; text-decoration: none; font-weight: 700;
+    transition: transform .2s, box-shadow .2s;
+  }
+  a:hover, a:focus-visible { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(255, 211, 110, .35); }
+  a:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+  .star { position: absolute; width: 4px; height: 4px; background: #fff; border-radius: 50%; animation: twinkle 2.5s infinite; }
+  .star:nth-of-type(1) { top: 12%; left: 18%; }
+  .star:nth-of-type(2) { top: 25%; left: 80%; animation-delay: .6s; }
+  .star:nth-of-type(3) { top: 70%; left: 12%; animation-delay: 1.2s; }
+  .star:nth-of-type(4) { top: 82%; left: 74%; animation-delay: 1.8s; }
+  .star:nth-of-type(5) { top: 45%; left: 92%; animation-delay: 2.1s; }
+  @keyframes float { 50% { transform: translateY(-14px); } }
+  @keyframes twinkle { 50% { opacity: .15; transform: scale(.6); } }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+</style>
+</head>
+<body>
+  <i class="star"></i><i class="star"></i><i class="star"></i><i class="star"></i><i class="star"></i>
+  <main>
+    <div class="code" aria-hidden="true"><span>4</span><span>0</span><span>4</span></div>
+    <h1>Ceci n'est pas une page</h1>
+    <p>This is not a page, and yet here you are. The one you were looking for has drifted off into space. Let's get you back somewhere real.</p>
+    <a href="/">Back to the home page</a>
+  </main>
+</body>
+</html>
