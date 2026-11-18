@@ -1,0 +1,6 @@
+# Fixes the typo in wp-settings.php (phpp instead of php) that makes Apache return a 500 error
+exec { 'fix-wordpress':
+  command => 'sed -i s/phpp/php/g /var/www/html/wp-settings.php',
+  onlyif  => 'grep -q phpp /var/www/html/wp-settings.php',
+  path    => '/bin:/usr/bin',
+}
